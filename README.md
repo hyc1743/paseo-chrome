@@ -9,7 +9,14 @@
 - 查看 agent 时间线（实时），发送消息
 - 批准或拒绝权限请求
 
-## 构建与安装
+## 下载安装（无需构建）
+1. 到 [Releases](https://github.com/hyc1743/paseo-chrome/releases/latest) 下载 `paseo-chrome-v*.zip` 并解压。
+2. 打开 `chrome://extensions` → 开启右上角「开发者模式」→「加载已解压的扩展程序」→ 选择解压出来的 `paseo-chrome-v*` 文件夹（里面直接有 `manifest.json`）。
+3. 点击工具栏的扩展图标打开侧边栏，粘贴配对链接后点「连接」。
+
+> 解压后的文件夹不要删除或移动，否则 Chrome 会无法加载该扩展。升级时下载新版解压覆盖，然后在扩展页点「重新加载」。
+
+## 从源码构建与安装
 ```bash
 npm install
 npm run build        # 输出到 dist/
