@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Paseo</title>
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <!-- Connection -->
+    <section id="connect-view">
+      <h1>Paseo</h1>
+      <label>配对链接 或 WebSocket 地址
+        <textarea id="url" rows="3" placeholder="https://app.paseo.sh/#offer=…&#10;或 ws://127.0.0.1:6767/ws"></textarea>
+      </label>
+      <p class="hint">在 host 上运行 <code>paseo daemon pair</code> 获取官方配对链接，粘贴即可（经 relay 端到端加密，无需配置 Origin）。</p>
+      <label>密码（可选）
+        <input id="password" type="password" />
+      </label>
+      <button id="connect-btn">连接</button>
+      <p id="connect-error" class="error"></p>
+      <details>
+        <summary>直连 ws:// 被拒绝 (Origin not allowed)?</summary>
+        <p>在 host 的 <code>~/.paseo/config.json</code> 中把本扩展的 origin 加入白名单后重启 daemon：</p>
+        <pre id="origin-hint"></pre>
+      </details>
+    </section>
+
+    <!-- Main -->
+    <section id="main-view" hidden>
+      <header>
+        <span id="status-dot"></span>
+        <span id="host-label"></span>
+        <button id="disconnect-btn" class="link">断开</button>
+      </header>
+
+      <div id="agent-list-view">
+        <div class="row">
+          <h2>Agents</h2>
+          <button id="refresh-btn" class="link">刷新</button>
+          <button id="new-btn">+ 新建</button>
+        </div>
+        <ul id="agents"></ul>
+      </div>
+
+      <form id="new-agent-view" hidden>
+        <h2>新建 Agent</h2>
+        <label>Provider / Model
+          <select id="provider"></select>
+        </label>
+        <label>工作目录 (cwd，host 上的绝对路径)
+          <input id="cwd" required />
+        </label>
+        <label>Prompt
+          <textarea id="prompt" rows="4" required></textarea>
+        </label>
+        <div class="row">
+          <button type="submit">创建</button>
+          <button type="button" id="cancel-new-btn" class="link">取消</button>
+        </div>
+        <p id="new-error" class="error"></p>
+      </form>
+
+      <div id="chat-view" hidden>
+        <div class="row">
+          <button id="back-btn" class="link">← 返回</button>
+          <strong id="chat-title"></strong>
+          <span id="chat-status" class="badge"></span>
+        </div>
+        <div id="permissions"></div>
+        <div id="timeline"></div>
+        <form id="send-form">
+          <textarea id="message" rows="3" placeholder="发送消息 (Ctrl+Enter)"></textarea>
+          <button type="submit">发送</button>
+        </form>
+      </div>
+    </section>
+    <script type="module" src="./src/sidepanel.ts"></script>
+  </body>
+</html>

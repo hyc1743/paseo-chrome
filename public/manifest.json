@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Paseo for Chrome",
+  "version": "0.1.0",
+  "description": "Connect to a Paseo daemon (host) and work with your coding agents from Chrome.",
+  "permissions": ["storage", "sidePanel"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_title": "Open Paseo" },
+  "side_panel": { "default_path": "sidepanel.html" }
+}

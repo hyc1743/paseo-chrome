@@ -1,0 +1,24 @@
+{
+    "name":  "paseo-chrome",
+    "version":  "1.0.0",
+    "description":  "",
+    "main":  "index.js",
+    "scripts":  {
+                    "build":  "tsc -p . \u0026\u0026 vite build",
+                    "dev":  "vite build --watch"
+                },
+    "keywords":  [
+
+                 ],
+    "author":  "",
+    "license":  "Apache-2.0",
+    "type":  "module",
+    "dependencies":  {
+                         "@getpaseo/client":  "^0.15.2"
+                     },
+    "devDependencies":  {
+                            "@types/chrome":  "^0.3.7",
+                            "typescript":  "^7.0.2",
+                            "vite":  "^8.3.6"
+                        }
+}
